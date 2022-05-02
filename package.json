@@ -4,7 +4,8 @@
   "description": "A simple calculator made with react",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,14 +18,20 @@
   },
   "homepage": "https://github.com/JennsiS/webCalculator#readme",
   "dependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "eslint": "^8.14.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -36,6 +43,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.6.2",
-    "webpack": "^5.72.0"
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   }
 }
