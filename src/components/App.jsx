@@ -5,10 +5,61 @@ import Keys from './Keys'
 
 export default function App() {
   const [content, updateContent] = useState(0)
+  const [operation, updateOperation] = useState([{ symbol: '=', operating: false }])
+  const [result, updateResult] = useState(0)
+  const [firstNumber, updateFirst] = useState(0)
+
   function setDisplay(symbol) {
     let newContent = content
-    newContent += symbol
-    updateContent(newContent)
+    const contentString = newContent.toString().length
+    if (contentString <= 9 && symbol !== 'x' && symbol !== '-' && symbol !== '+' && symbol !== '=' && symbol !== '÷' && symbol !== '+/-') {
+      newContent += symbol
+      updateContent(newContent)
+    }
+
+    if (symbol === '+' || symbol === 'x' || symbol === '-' || symbol === '÷') {
+      let number1 = firstNumber
+      number1 = newContent
+      updateFirst(number1)
+      updateContent(0)
+
+      const newOperation = operation
+      newOperation[0].symbol = symbol
+      newOperation[0].operating = true
+      updateOperation([...newOperation])
+      console.log(operation)
+      console.log(firstNumber)
+    }
+
+    if (operation[0].operating) {
+      const number2 = newContent
+      const number1 = firstNumber
+      let newResult = result
+
+      if (symbol === '+') {
+        newResult = number1 + number2
+        console.log(`1 ${number1}`)
+        console.log(`2 ${number2}`)
+        console.log(`suma ${newResult}`)
+      } else if (symbol === '-') {
+        newResult = number1 - number2
+      } else if (symbol === 'x') {
+        newResult = number1 * number2
+      } else if (symbol === '÷') {
+        newResult = number1 / number2
+      }
+      updateResult(newResult)
+      const newOperation = operation
+      newOperation[0].symbol = symbol
+      newOperation[0].operating = false
+      updateOperation([...newOperation])
+      console.log(result)
+    }
+
+    if (symbol === '=') {
+      newContent = result
+      updateContent(newContent)
+    }
   }
   return (
     <div className="calculator">
