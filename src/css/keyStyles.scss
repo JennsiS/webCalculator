@@ -1,0 +1,120 @@
+.numericKey{
+    border-radius: 25%;
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    text-align: center;
+}
+
+.symbolKey{
+   position: absolute;
+}
+
+.btn-grad {
+   margin: 10px;
+   padding: 20px 33px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: black;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+   background-color: white;
+   font-family: 'Press Start 2P', cursive;
+ }
+
+ .btn-grad:hover{
+    background-image: linear-gradient(to right, #FEAC5E 0%, #C779D0  51%, #FEAC5E  100%)
+ }
+
+ .zero{
+    left: 10%;
+    bottom: 5%;
+    width: 50%;
+    button{
+        width: 75%;
+    }
+ }
+
+ .dot{
+   left: 50%;
+   bottom: 7%;
+ }
+
+ .one{
+    left: 10%;
+    bottom: 20%;
+ }
+
+ .two {
+    left: 30%;
+    bottom: 20%;
+ }
+
+ .three{
+    left: 50%;
+    bottom: 20%;
+ }
+
+ .four{
+    left: 10%;
+    bottom: 35%;
+ }
+
+ .five{
+    left: 30%;
+    bottom: 35%;
+ }
+
+ .six{
+    left: 50%;
+    bottom: 35%;
+ }
+
+ .seven{
+    left: 10%;
+    bottom: 50%;
+ }
+
+ .eight{
+    left: 30%;
+    bottom: 50%;
+ }
+
+ .nine{
+    left: 50%;
+    bottom: 50%;
+ }
+
+ .equal{
+   right: 7%;
+   bottom: 8%;
+ }
+
+ .add{
+   right: 7%;
+   bottom: 23%;
+ }
+
+ .multiply{
+   right: 7%;
+   top: 35%;
+ }
+
+ .sub{
+   right: 7%;
+   bottom: 38%;
+ }
+
+ .sign{
+   right: 32%;
+   top: 23%;
+ }
+
+ .div{
+   right: 7%;
+   top: 23%;
+ }
+
