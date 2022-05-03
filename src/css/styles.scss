@@ -27,5 +27,36 @@ body{
     height: 14%;
     text-align: right;
     line-height: 100px;
-
+    font-family: 'Press Start 2P', cursive;
+    font-size: medium;
 }
+
+.deleteKey{
+    border-radius: 25%;
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    text-align: center;
+    position: absolute;
+    right: 75%;
+    top: 22%;
+}
+
+.btn-grad {
+    margin: 10px;
+    padding: 20px 33px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    background-color: white;
+    font-family: 'Press Start 2P', cursive;
+  }
+ 
+  .btn-grad:hover{
+     background-image: linear-gradient(to right, #FEAC5E 0%, #C779D0  51%, #FEAC5E  100%)
+  }

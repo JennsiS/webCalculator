@@ -4,7 +4,7 @@ import '../css/styles.scss'
 import Keys from './Keys'
 
 export default function App() {
-  const [content, updateContent] = useState(0)
+  const [content, updateContent] = useState('')
   const [operation, updateOperation] = useState([{ symbol: '=', operating: false }])
   const [result, updateResult] = useState(0)
   const [firstNumber, updateFirst] = useState(0)
@@ -12,55 +12,62 @@ export default function App() {
   function setDisplay(symbol) {
     let newContent = content
     const contentString = newContent.toString().length
-    if (contentString <= 9 && symbol !== 'x' && symbol !== '-' && symbol !== '+' && symbol !== '=' && symbol !== '÷' && symbol !== '+/-') {
+    if (contentString < 9 && symbol !== 'x' && symbol !== '-' && symbol !== '+' && symbol !== '=' && symbol !== '÷' && symbol !== '+/-') {
       newContent += symbol
       updateContent(newContent)
     }
+    const actualContent = content
+
+    if (operation[0].operating && symbol === '=') {
+      const number2 = Number(actualContent)
+      const number1 = Number(firstNumber)
+      let newResult = result
+      const operatingSymbol = operation[0].symbol
+      if (operatingSymbol === '+') {
+        newResult = number1 + number2
+      } else if (operatingSymbol === '-') {
+        newResult = number1 - number2
+      } else if (operatingSymbol === 'x') {
+        newResult = number1 * number2
+      } else if (operatingSymbol === '÷') {
+        newResult = number1 / number2
+      }
+      // console.log(`newResult ${newResult}`)
+      updateResult(newResult)
+      const newOperation = operation
+      newOperation[0].symbol = ''
+      newOperation[0].operating = false
+      updateOperation([...newOperation])
+      const setResult = newResult
+      console.log(`resultado ${setResult}`)
+      updateContent(setResult)
+      console.log(`contenido ${result}`)
+    }
 
     if (symbol === '+' || symbol === 'x' || symbol === '-' || symbol === '÷') {
-      let number1 = firstNumber
-      number1 = newContent
+      const number1 = Number(actualContent)
+      console.log(`sumando 1 ${number1}`)
       updateFirst(number1)
-      updateContent(0)
+      updateContent('')
 
       const newOperation = operation
       newOperation[0].symbol = symbol
       newOperation[0].operating = true
       updateOperation([...newOperation])
-      console.log(operation)
-      console.log(firstNumber)
     }
 
-    if (operation[0].operating) {
-      const number2 = newContent
-      const number1 = firstNumber
-      let newResult = result
-
-      if (symbol === '+') {
-        newResult = number1 + number2
-        console.log(`1 ${number1}`)
-        console.log(`2 ${number2}`)
-        console.log(`suma ${newResult}`)
-      } else if (symbol === '-') {
-        newResult = number1 - number2
-      } else if (symbol === 'x') {
-        newResult = number1 * number2
-      } else if (symbol === '÷') {
-        newResult = number1 / number2
-      }
-      updateResult(newResult)
-      const newOperation = operation
-      newOperation[0].symbol = symbol
-      newOperation[0].operating = false
-      updateOperation([...newOperation])
-      console.log(result)
-    }
-
-    if (symbol === '=') {
-      newContent = result
-      updateContent(newContent)
+    if (symbol === '+/-') {
+      let actualNumber = Number(actualContent)
+      actualNumber *= (-1)
+      updateContent(actualNumber)
     }
   }
+
+  function deleteContent() {
+    const empty = ''
+    updateContent(empty)
+  }
+
   return (
     <div className="calculator">
       <Keys keyName="numericKey one" symbol="1" clickFunction={setDisplay} />
@@ -81,6 +88,9 @@ export default function App() {
       <Keys keyName="symbolKey div" symbol="÷" clickFunction={setDisplay} />
       <Keys keyName="symbolKey sign" symbol="+/-" clickFunction={setDisplay} />
       <div className="display" id="display">{content}</div>
+      <div className="deleteKey">
+        <button type="button" className="btn-grad" onClick={() => deleteContent()}>C</button>
+      </div>
     </div>
   )
 }
