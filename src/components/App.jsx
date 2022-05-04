@@ -12,7 +12,7 @@ export default function App() {
   function setDisplay(symbol) {
     let newContent = content
     const contentString = newContent.toString().length
-    if (contentString < 9 && symbol !== 'x' && symbol !== '-' && symbol !== '+' && symbol !== '=' && symbol !== '÷' && symbol !== '+/-') {
+    if (contentString < 9 && symbol !== 'x' && symbol !== '-' && symbol !== '+' && symbol !== '=' && symbol !== '÷' && symbol !== '+/-' && symbol !== '%') {
       newContent += symbol
       updateContent(newContent)
     }
@@ -31,22 +31,32 @@ export default function App() {
         newResult = number1 * number2
       } else if (operatingSymbol === '÷') {
         newResult = number1 / number2
+      } else if (operatingSymbol === '%') {
+        newResult = number1 % number2
       }
-      // console.log(`newResult ${newResult}`)
+
+      if (newResult > 999999999 || newResult < 0) {
+        newResult = 'ERROR'
+      }
+
+      if (newResult % 1 !== 0) {
+        const splitResult = newResult.toString().split('.')
+        const wholeNumber = splitResult[0].length
+        const decimals = 8 - wholeNumber
+        newResult = Number(newResult).toFixed(decimals)
+      }
+
       updateResult(newResult)
       const newOperation = operation
       newOperation[0].symbol = ''
       newOperation[0].operating = false
       updateOperation([...newOperation])
       const setResult = newResult
-      console.log(`resultado ${setResult}`)
       updateContent(setResult)
-      console.log(`contenido ${result}`)
     }
 
-    if (symbol === '+' || symbol === 'x' || symbol === '-' || symbol === '÷') {
+    if (symbol === '+' || symbol === 'x' || symbol === '-' || symbol === '÷' || symbol === '%') {
       const number1 = Number(actualContent)
-      console.log(`sumando 1 ${number1}`)
       updateFirst(number1)
       updateContent('')
 
@@ -87,6 +97,7 @@ export default function App() {
       <Keys keyName="symbolKey multiply" symbol="x" clickFunction={setDisplay} />
       <Keys keyName="symbolKey div" symbol="÷" clickFunction={setDisplay} />
       <Keys keyName="symbolKey sign" symbol="+/-" clickFunction={setDisplay} />
+      <Keys keyName="symbolKey mod" symbol="%" clickFunction={setDisplay} />
       <div className="display" id="display">{content}</div>
       <div className="deleteKey">
         <button type="button" className="btn-grad" onClick={() => deleteContent()}>C</button>
