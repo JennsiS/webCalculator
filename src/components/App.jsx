@@ -60,7 +60,6 @@ export default function App() {
         const displayContent = 'ERROR'
         newResult = displayContent
         updateResult(0)
-        console.log(`error ${newResult}`)
         updateContent(newResult)
       }
 
@@ -75,8 +74,6 @@ export default function App() {
       }
 
       updateResult(newResult)
-      console.log(`error2 ${newResult}`)
-      console.log(`content ${content}`)
       updateContent(newResult.toString())
       updateFirst(newResult)
       const newOperation = operation
