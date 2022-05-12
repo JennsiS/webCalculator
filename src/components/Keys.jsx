@@ -8,8 +8,8 @@ export default function Cards(props) {
   const { clickFunction } = props
 
   return (
-    <div className={keyName}>
-      <button type="button" className="btn-grad" onClick={() => { clickFunction(symbol) }}>{symbol}</button>
+    <div className={keyName} data-testid="keyTest">
+      <button data-testid="buttonKey" type="button" className="btn-grad" onClick={() => { clickFunction(symbol) }}>{symbol}</button>
     </div>
   )
 }
