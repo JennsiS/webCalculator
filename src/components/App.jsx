@@ -115,7 +115,7 @@ export default function App() {
       <div className="title">
         <h2>Calculator</h2>
       </div>
-      <div className="calculator">
+      <div className="calculator" data-testid="calculator-test">
         <Keys keyName="numericKey one" symbol="1" clickFunction={setDisplay} />
         <Keys keyName="numericKey two" symbol="2" clickFunction={setDisplay} />
         <Keys keyName="numericKey three" symbol="3" clickFunction={setDisplay} />
@@ -135,7 +135,7 @@ export default function App() {
         <Keys keyName="symbolKey sign" symbol="+/-" clickFunction={setDisplay} />
         <Keys keyName="symbolKey mod" symbol="%" clickFunction={setDisplay} />
         <div className="display" id="display">{content}</div>
-        <div className="deleteKey">
+        <div className="deleteKey" data-testid="delete-test">
           <button type="button" className="btn-grad" onClick={() => deleteContent()}>C</button>
         </div>
       </div>

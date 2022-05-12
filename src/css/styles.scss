@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-body{
+body {
     //background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     background: rgb(20,28,73);
     background: radial-gradient(circle, rgba(20,28,73,1) 26%, rgba(66,38,97,1) 100%); 
-	height: 100vh;
+	  height: 100vh;
 }
 @keyframes gradient {
 	0% {
@@ -18,7 +18,7 @@ body{
 	}
 }
 
-.calculator{
+.calculator {
     border-radius: 7%;
     opacity: 1;
     height: 100%;
@@ -51,7 +51,7 @@ body{
     font-size: medium;
 }
 
-.deleteKey{
+.deleteKey {
     border-radius: 25%;
     position: absolute;
     width: 15%;
@@ -77,12 +77,12 @@ body{
     font-family: 'Press Start 2P', cursive;
   }
  
-  .btn-grad:hover{
+  .btn-grad:hover {
     background-color: #FF3CAC;
     background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
   }
 
-  .title{
+  .title {
       align-content: center;
       h2{
         font-size: 65px;
