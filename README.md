@@ -11,3 +11,7 @@ Simple calculator made with React. This calculator has the ability to perform ad
 * Node.js (v16.14.2)
 * Nginx
 * Prettier (v^2.6.2)
+
+# Testing
+* Jest
+* Testing-library

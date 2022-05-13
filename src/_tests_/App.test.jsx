@@ -139,4 +139,22 @@ describe('App', () => {
     display.innerHTML = content
     expect(display.innerHTML).toBe('0')
   })
+  it('Click on a key', () => {
+    const app = render(<App />)
+    const button = app.getByTestId('buttonKey-1')
+    fireEvent.click(button)
+    expect(button).toBeInTheDocument()
+  })
+  it('Click on a key', () => {
+    const app = render(<App />)
+    const button = app.getByTestId('buttonKey-+')
+    fireEvent.click(button)
+    expect(button).toBeInTheDocument()
+  })
+  it('Click on a key', () => {
+    const app = render(<App />)
+    const button = app.getByTestId('buttonKey-=')
+    fireEvent.click(button)
+    expect(button).toBeInTheDocument()
+  })
 })
